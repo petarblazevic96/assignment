@@ -1,12 +1,12 @@
-import { SearchTopic } from '../models/search';
+import { SearchTopic } from '../models/model';
 import * as types from '../utils/actionTypes';
 
 const initialState = { 
-    history: Array<SearchTopic>(),
+    history: [],
     result: SearchTopic,
 };
 
-export function topicsReducer(state = initialState, action: any) {
+export function topicsReducer(state = initialState, action) {
     switch(action.type) {
         case types.INIT: {
             let topics = action.payload;

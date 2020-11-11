@@ -4,7 +4,7 @@ const config = {
     },
     settings: {
         duckduckgoApi: 'api.duckduckgo.com',
-        historyFile: '[PATH_TO_HISTORY_FILE]',
+        historyFile: '[PATH_TO_HISTORY_JSON]',
     }
 };
 

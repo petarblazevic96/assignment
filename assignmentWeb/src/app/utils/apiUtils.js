@@ -1,16 +1,16 @@
 import { API_URL } from './config';
 
-export function searchRelatedTopics(query:string) {
+async function searchRelatedTopics(query) {
     let url = `${API_URL}/api/result/${query}`;
 
-    return fetch(url, { 
+    const res = await fetch(url, {
         mode: 'cors',
         method: 'GET'
-    })
-        .then(res => res.json());
+    });
+    return await res.json();
 }
 
-export function saveSearch(search: any) {
+async function saveSearch(search) {
     let url = `${API_URL}/api/history/`;
     
     return fetch(url, {
@@ -25,7 +25,7 @@ export function saveSearch(search: any) {
         .then(res => res.json());
 }
 
-export function getHistory() {
+async function getHistory() {
     let url = `${API_URL}/api/history/`;
 
     return fetch(url, {
@@ -33,4 +33,10 @@ export function getHistory() {
         method: 'GET'
     })
         .then(res => res.json());
+}
+
+export {
+    searchRelatedTopics,
+    saveSearch,
+    getHistory,
 }

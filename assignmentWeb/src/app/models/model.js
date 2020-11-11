@@ -1,11 +1,5 @@
-export class Topic {
-    firstPart: string;
-    readMoreContent: string;
-    url: string;
-    id: string;
-    renderReadMore: boolean;
-
-    constructor(content: string, url: string, id: string) {
+class Topic {
+    constructor(content, url, id) {
         this.url = url;
         this.id = id;
         
@@ -21,13 +15,8 @@ export class Topic {
     }
 }
 
-export class SearchTopic {
-    query: string;
-    topics: Topic[];
-    dateOfSearch: string;
-    id: string;
-
-    constructor(query: string, topics: Topic[], dateOfSearch: string, id: string) {
+class SearchTopic {
+    constructor(query, topics, dateOfSearch, id) {
         this.query = query;
         this.topics = topics;
         this.dateOfSearch = dateOfSearch;
@@ -37,4 +26,9 @@ export class SearchTopic {
     print() {
         return `${this.query} ${this.dateOfSearch}`
     }
+}
+
+export {
+    Topic,
+    SearchTopic,
 }

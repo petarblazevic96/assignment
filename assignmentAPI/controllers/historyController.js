@@ -1,7 +1,7 @@
 const fs = require('fs');
 const config = require('../config');
 
-exports.get_history = (req, res) => {
+exports.getHistory = (req, res) => {
     let fileData = fs.readFileSync(config.settings.historyFile);
     let data = [];
     
@@ -13,7 +13,7 @@ exports.get_history = (req, res) => {
     res.send(data);
 };
 
-exports.save_history = (req, res) => {
+exports.saveHistory = (req, res) => {
     let existingData = [];
     let fileData = fs.readFileSync(config.settings.historyFile);
     

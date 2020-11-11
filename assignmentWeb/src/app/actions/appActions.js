@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { v4 as uuidv4 } from 'uuid';
-import { SearchTopic, Topic } from '../models/search';
+import { SearchTopic, Topic } from '../models/model';
 import { 
     searchRelatedTopics, 
     saveSearch, 
@@ -8,12 +8,12 @@ import {
 } from '../utils/apiUtils';
 import * as types from '../utils/actionTypes';
 
-export const fetchSearchHistory = () => async (dispatch: Dispatch) => {
+const fetchSearchHistory = () => async (dispatch) => {
 
     let history = await Promise.resolve(getHistory());
 
-    let historyItems = history.map((item: any) => {
-        let topics = item.topics.map((topic: any) => {
+    let historyItems = history.map((item) => {
+        let topics = item.topics.map((topic) => {
             return new Topic(topic.title, topic.url, uuidv4());
         });
 
@@ -28,14 +28,14 @@ export const fetchSearchHistory = () => async (dispatch: Dispatch) => {
     });
 };
 
-export const searchQuery = (query: string) => async (dispatch: Dispatch) => {
+const searchQuery = (query) => async (dispatch) => {
     
     let encodedQuery = encodeURIComponent(query);
     
     let result = await Promise.resolve(searchRelatedTopics(encodeURIComponent(encodedQuery)));
-    let topics = new Array<Topic>();
+    let topics = [];
     
-    topics = result.map((topic: any) => {
+    topics = result.map((topic) => {
         return new Topic(topic.title, topic.url, uuidv4());
     });
 
@@ -47,7 +47,7 @@ export const searchQuery = (query: string) => async (dispatch: Dispatch) => {
     let forHistorySave = {
         query: query,
         dateOfSearch: localDate,
-        topics: result.map((topic: any) => { return {
+        topics: result.map((topic) => { return {
             title: topic.title,
             url: topic.url,
         }})
@@ -61,9 +61,15 @@ export const searchQuery = (query: string) => async (dispatch: Dispatch) => {
     });
 };
 
-export const clear = () => (dispatch: Dispatch) => {
+const clear = () => (dispatch) => {
     dispatch({
         type: types.CLEAR,
         payload: null
     });
+}
+
+export {
+    fetchSearchHistory,
+    searchQuery,
+    clear,
 }

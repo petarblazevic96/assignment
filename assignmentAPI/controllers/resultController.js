@@ -1,7 +1,7 @@
 const https = require('https');
 const config = require('../config');
 
-exports.ddg_result = (req, res) => {
+exports.ddgResult = (req, res) => {
     const query = req.params.query;
     const options = {
         host: config.settings.duckduckgoApi,

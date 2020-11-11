@@ -9,8 +9,11 @@
     "express": "^4.17.1",
     "request": "^2.88.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.13.0"
+  },
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
