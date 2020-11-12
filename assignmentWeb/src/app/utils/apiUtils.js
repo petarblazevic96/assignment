@@ -1,4 +1,4 @@
-import { API_URL } from './config';
+import { API_URL } from '../../config';
 
 async function searchRelatedTopics(query) {
     let url = `${API_URL}/api/result/${query}`;
